@@ -1,0 +1,113 @@
+/* 
+Edita els estils per a que es vegi com aquest imatge:
+https://moodle.esteveterradas.cat/pluginfile.php/182766/mod_page/content/5/m9%20menu.png
+
+Posa en conjunt tot el que has apres sobre, display, position, etc. 
+*/
+header, nav, footer {
+  background: #aaa;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+nav ul {
+  padding: 0;
+  margin:0;
+  list-style: none;
+}
+
+nav > ul > li {
+  background: red;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+nav > ul > li.has-childs > a::after {
+  content: "⇩";
+  margin-left: 10px;
+}
+
+nav > ul > li > ul > li.has-childs > a::after {
+  content: "⇨";
+  margin-left: 10px;
+}
+
+nav  a {
+  padding: 5px;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+  background: yellow;
+  color: black;
+}
+
+nav > ul > li > ul,
+nav > ul > li > ul > li > ul,
+nav form {
+  display: none;
+}
+
+nav > ul > li.has-childs:hover > ul {
+  display:block;
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+}
+
+nav > ul > li > ul > li.has-childs {
+  position: relative;
+}
+
+nav > ul > li > ul > li > ul > li > a {
+  background: rgba(0,0,0,0.5);
+}
+
+nav > ul > li > ul > li.has-childs:hover > ul {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  overflow: auto;
+  visibility: hidden;
+}
+
+.pagination {
+  margin-left: 50%;
+}
+
+.pagination ul {
+  width: 100%;
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+  margin-left: -25%;
+}
+
+.pagination ul li {
+  float:left;
+  padding: 0 5px;
+}
+
+.pagination ul li {
+  list-style: none;
+}
+
+.pagination ul li a {
+  display: block;
+  padding: 10px;
+  border: 1px solid silver;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background-color: salmon;
+}

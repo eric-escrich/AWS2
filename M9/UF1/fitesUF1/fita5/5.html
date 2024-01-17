@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Formulari de registre</h1>
+    <form method="POST">
+        <fieldset>
+            <legend>Dades personals</legend>
+            <label>Nom:</label>
+            <input type="text" maxlength="8">
+            <br>
+            <br>
+            <label>Cognoms:</label>
+            <input type="text" maxlength="8">
+            <br>
+            <br>
+            <label>Sexe:</label>
+            <input type="radio" id="Home" name="sexe" value="Home">
+            <label for="html">Home</label>
+            <input type="radio" id="Dona" name="sexe" value="Dona">
+            <label for="Dona">Dona</label>
+            <br>
+            <br>
+            <label>E-mail:</label>
+            <input type="email">
+        </fieldset>
+        
+        <br>
+        <fieldset>
+            <legend>Autoritzacions</legend>
+            <input type="checkbox" id="opc1" name="opc1" value="opc1" checked>
+            <label for="opc1">M'agradaria rebre informació sobre novetats i ofertes.</label><br>
+            <input type="checkbox" id="opc2" name="opc2" value="opc2">
+            <label for="opc2">Declaro haver llegit i acceptar les condicions generals del programa i la normativa sobre protecció de dades.</label><br>
+        </fieldset> 
+        <br>
+        <input type="submit" value="Enviar">
+        <button type="reset">Netejar</button>
+    </form>
+</body>
+</html>

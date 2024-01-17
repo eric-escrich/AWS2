@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    div, strong, p, em {
+        display: block;
+        border: 1px solid grey;
+        margin: 5px;
+        padding: 5px;
+    }
+    
+    div > p:nth-of-type(odd) {
+        background-color: green;
+    }
+
+    div > div > em:first-child {
+        background-color: red;
+    }
+
+</style>
+</head>
+<body>
+<div>DIV
+    <strong>STRONG</strong>
+    <p>PARÀGRAF</p>
+    <p>PARÀGRAF</p>
+    <p>PARÀGRAF</p>
+    <p>PARÀGRAF</p>
+    <p>PARÀGRAF</p>
+    <div>DIV
+        <em>ÈMFASI</em>
+        <em>ÈMFASI</em>
+        <em>ÈMFASI</em>
+    </div>
+</div>
+</body>
+</html>

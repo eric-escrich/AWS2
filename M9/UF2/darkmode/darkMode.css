@@ -1,0 +1,40 @@
+body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+}
+table, th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+table th {
+    background-color: rgba(0,0,0,0.5);
+}
+table tr:nth-child(even) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #FFF;
+}
+
+body.dark-mode table, 
+body.dark-mode th,
+body.dark-mode td {
+    border: 1px solid #FFF;
+}
+
+body.dark-mode table th {
+    background-color: rgba(255,255,255,0.5);
+}
+
+body.dark-mode table tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.no.js button{
+    display: none;
+}
+  

@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #fff9f9;
+}
+
+header, nav, main, sidebar, section, article, footer {
+    display: block;
+    border: 1px solid red;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    background-clip: padding-box;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 10% 10% auto 10%;
+    gap: 10px;
+    grid-template-areas: 
+    "header header header"
+    "sidebar nav ads"
+    "sidebar main ads"
+    "footer footer footer";
+    margin: 10px;
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+sidebar {
+    grid-area: sidebar;
+}
+
+section {
+    grid-area: ads;
+}
+
+footer {
+    grid-area: footer;
+}

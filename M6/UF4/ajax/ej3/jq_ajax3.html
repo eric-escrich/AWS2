@@ -1,0 +1,41 @@
+<html>
+  <head>
+     <title>Ajax Simple</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <script>
+    //Hacemos click en "enlaceajax", cancelamos el evento click por defecto y en el div destino ejecutamos la función load
+    // pasandole la URL de destino, los parámetros para el servidor y una función para recibir info de la llamada
+    $(function(){
+        $("#enlaceajax").click(function(e){
+            e.preventDefault();
+            var nombre = $("input[name=nombre]").val();
+            var edad= $("input[name=edad]").val();
+            data = {
+                nombre: nombre,
+                rdad: edad,
+            };
+            $("#destino").load("jq_ajax3.php", {nombre: $("input[name=nombre]").val(), edad: $("input[name=edad]").val()}, datosRecibidos);
+        });
+    })
+
+    //pintamos el status de la llamada AJAX en el div "info"
+    function datosRecibidos(response, status){
+    }
+    </script>
+  </head>
+  <body>
+    <p>
+      <label for="nombre">Introduce tu nombre</label>
+      <input name="nombre" type="text" />
+      <br />
+      <label for="edad">Introduce tu edad</label>
+      <input name="edad" type="number" />
+    </p>
+    <a href="#" id="enlaceajax">Haz clic!</a>
+    <br>
+    <div id="destino"></div>
+    <br />
+    <div id="info">
+    </div>
+  </body>
+</html>

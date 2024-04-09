@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <button id="startButton">Iniciar animació</button>
+    <div id="animatedDiv" style="display:block; width:200px; height:200px; background:red;"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#startButton").click(function(){
+                $("#animatedDiv").animate({
+                    width: '500px',
+                    height: '500px'
+                }, 2000, function() {
+                    $(this).css('background', 'green');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

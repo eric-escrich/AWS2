@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible app</title>
+    <meta name="description" content="Bible app using api from 'https://bible-api.com/'">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="w-screen h-screen bg-black/90 text-white">
+    <header class="fixed top-5 bg-black right-[50%] translate-x-1/2 rounded-xl">
+        <nav>
+            <ul class="flex gap-5 px-5 py-3">
+                <li class="hover:bg-white/10 px-2 py-1 transition-colors rounded-full">
+                    <button id="action-random-verse">Get a random verse</button>
+                </li>
+                <li class="hover:bg-white/10 px-2 py-1 transition-colors rounded-full">
+                    <button id="action-language-verse">Pick a language</button>
+                </li>
+                <li class="hover:bg-white/10 px-2 py-1 transition-colors rounded-full">
+                    <button id="action-custom-verse">Custom search</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="flex flex-col items-center justify-center w-screen h-screen px-10">
+        <h1 class="text-5xl font-bold mb-7">Bible api</h1>
+
+        <section id="random-verse-section" class="text-xl w-full text-center"></section>
+        <section id="search-verse-section" class="text-xl w-full flex flex-col justify-center items-center">
+            <select name="language" id="language" class="bg-transparent outline-none border-2 border-white rounded-md cursor-pointer mb-5">
+                <option class="text-black" value="cherokee">Cherokee</option>
+                <option class="text-black" value="bkr">Czech</option>
+                <option class="text-black" value="asv">English (American Standard Version 1901)</option>
+                <option class="text-black" value="bbe">Bible in Basic English</option>
+                <option class="text-black" value="darby">English (Darby Bible)</option>
+                <option class="text-black" value="dra">English (Douay-Rheims 1899 American Edition)</option>
+                <option class="text-black" value="kjv">King James Version</option>
+                <option class="text-black" value="web" selected>English (World English Bible)</option>
+                <option class="text-black" value="ylt">English (Young's Literal Translation)</option>
+                <option class="text-black" value="oeb-cw">English UK (Open English Bible, Commonwalth Edition)</option>
+                <option class="text-black" value="webbe">English UK (World English Bible, British Edition)</option>
+                <option class="text-black" value="oeb-us">English US (Open English Bible, US Edition)</option>
+                <option class="text-black" value="clementine">Latin</option>
+                <option class="text-black" value="almeida">Portuguese</option>
+                <option class="text-black" value="rccv">Romanian</option>
+            </select>
+
+            <button id="search-translation-button" class="bg-white text-black px-2 py-1 rounded-lg font-semibold mb-8">Search</button>
+            
+            
+            <div class="text-center">
+                <h2 class="text-3xl font-bold">Result:</h2>
+                <p id="language-result"></p>
+            </div>
+        </section>
+
+        <section id="search-translation-section" class="text-xl w-full flex flex-col justify-center items-center">
+            <input type="text" name="custom-search" id="custom-search" class="bg-transparent outline-none border-2 border-white rounded-md mb-5">
+            <button id="custom-search-button" class="bg-white text-black px-2 py-1 rounded-lg font-semibold mb-8">Search</button>
+
+            <div class="text-center">
+                <h2 class="text-3xl font-bold">Result:</h2>
+                <p id="custom-result"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        $(function() {
+            // Esconder las secciones al cargar.
+            $("#random-verse-section").hide()
+            $("#search-verse-section").hide()
+            $("#search-translation-section").hide()
+
+            // Listener para el boton de buscar por idioma.
+            $("#search-translation-button").click(function() {
+                let language = $("#language").val()
+                getAjaxResponse(`?random=verse&translation=${language}`, $('#language-result'))
+            })
+
+            // Listener para el boton de buscar personalizado.
+            $("#custom-search-button").click(function() {
+                let customSearch = $("#custom-search").val()
+                getAjaxResponse(customSearch, $('#custom-result'))
+            })
+
+
+            function paintData(res, element) {
+                element.html(res.text)
+            }
+
+            function processFail(res, element) {
+                element.html("Results not found, please check your input.")
+            }
+
+            function getAjaxResponse(params, element) {
+                element.html('Loading...')
+                let req = $.ajax({
+                    url: `https://bible-api.com/${params}`,
+                    method: 'GET',
+                    crossDomain: false,
+                    dataType: 'jsonp',
+                }).done((data) => paintData(data, element))
+                  .fail((data) => processFail(data, element))
+            }
+
+            // Mostramos la sección que nos interesa
+            $('#action-random-verse').click(function() {
+                $("#random-verse-section").show()
+                $("#search-verse-section").hide()
+                $("#search-translation-section").hide()
+                // Llamamos a la función pasandole los parametros
+                // y el elemento en el que queremos pintar el resultado
+                getAjaxResponse('?random=verse', $('#random-verse-section'))    
+            })
+
+            $('#action-language-verse').click(function() {
+                $("#random-verse-section").hide()
+                $("#search-verse-section").show()
+                $("#search-translation-section").hide()
+                // La llamada ajax se realiza tras el click del botón, línea 81.
+            })
+
+            $('#action-custom-verse').click(function() {
+                $("#random-verse-section").hide()
+                $("#search-verse-section").hide()
+                $("#search-translation-section").show()
+            })
+        })
+    </script>
+</body>
+</html>

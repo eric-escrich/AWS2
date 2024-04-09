@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.caja_carrito {
+			display: flex;
+		}
+		.caja_producto {
+			display: flex;
+			justify-content: space-around;
+			width: 400px;
+		}
+		.nombre_producto, .precio_producto, .cantidad_producto {
+			width: 100px;
+		}
+	</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+	<h3>Carrito de la compra</h3>
+	<div id="caja_carrito">
+		<div class="caja_producto">
+			<div class="nombre_producto">Coca-cola</div>
+			<div class="precio_producto">2,50</div>
+			<div class="cantidad_producto">3</div>
+		</div>
+		<div class="caja_producto">
+			<div class="nombre_producto">Hamburguesa</div>
+			<div class="precio_producto">5,50</div>
+			<div class="cantidad_producto">3</div>
+		</div>
+		<div class="caja_producto">
+			<div class="nombre_producto">Patatas</div>
+			<div class="precio_producto">1,50</div>
+			<div class="cantidad_producto">3</div>
+		</div>
+		<div class="caja_producto">
+			<div id="total" class="nombre_producto"></div>
+		</div>
+	</div>
+    <script src="1.js"></script>
+</body>
+</html>

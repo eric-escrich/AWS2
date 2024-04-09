@@ -1,5 +1,5 @@
 <?php
 $hostname = "localhost";
-$dbname = "encuesta2";
-$username = "encuesta2";
-$pw = "naranjasV3rdes#";
+$dbname = "classicmodels";
+$username = "eric_escrich";
+$pw = "1234";

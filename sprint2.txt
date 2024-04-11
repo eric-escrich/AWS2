@@ -1,0 +1,8 @@
+crear un sistema de logs
+    -user
+    -fecha hora
+    -que ocurre (tipo de acciones: logInErrors, ...)
+
+1 archivo log para cada día
+
+en la 

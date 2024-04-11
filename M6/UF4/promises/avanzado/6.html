@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        const url = 'https://jsonplaceholder.typicode.com/posts/1';
+        const url2 = 'https://api.chucknorris.io/jokes/random';
+        async function obtenerDatosDe2APIs(url1, url2) {
+            try {
+                let resApi1 = await fetch(url1);
+                let datosApi1 = await resApi1.json();
+
+                let resApi2 = await fetch(url2);
+                let datosApi2 = await resApi2.json();
+
+                let datosCombinados = {...datosApi1, ...datosApi2};
+
+                return datosCombinados;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        obtenerDatosDe2APIs(url, url2).then(datos => console.log(datos.body + '\n' + datos.value));
+    </script>
+</body>
+</html>

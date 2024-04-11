@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        const url = 'https://jsonplaceholder.typicode.com/posts/1';
+        const url2 = 'https://api.chucknorris.io/jokes/random';
+        async function obtenerDatos(url) {
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        datosURL1 = obtenerDatos(url);
+        datosURL2 = obtenerDatos(url2);
+        Promise.all([datosURL1, datosURL2])
+            .then(data => {
+                console.log(data[0].body);
+                console.log(data[1].value);
+            });
+    </script>
+</body>
+</html>

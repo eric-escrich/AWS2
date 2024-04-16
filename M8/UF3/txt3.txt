@@ -1,0 +1,6 @@
+ GNU nano 6.2                                                         .htaccess                                                                   
+<IfModule mod_setenvif.c>
+    SetEnvIf X-Forwarded-For "^85\.192\.71\.100$" BLOCKED_IP
+    Order Deny,Allow
+    Deny from env=BLOCKED_IP
+</IfModule>

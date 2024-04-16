@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <form id="myForm" action="?" method="post">
+        <input id="password1" name="p1" type="password" required /><br/>
+        <input id="password2" name="p2" type="password" required /><br/>
+        <input name="Enviar" type="submit" />
+    </form>
+    <script>
+        $(document).ready(function(){
+            $("#myForm").on("submit", function(e){
+                var password1 = $("#password1").val();
+                var password2 = $("#password2").val();
+                if(password1 !== password2 || password1.length < 8 || password2.length < 8){
+                    alert("ERROR");
+                    e.preventDefault();
+                } else {
+                    if(!confirm("¿Estás seguro de que quieres enviar el formulario?")){
+                        e.preventDefault();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

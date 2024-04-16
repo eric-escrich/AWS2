@@ -1,0 +1,12 @@
+  GNU nano 6.2                                                         .htaccess                                                                   
+<IfModule mod_setenvif.c>
+    SetEnvIf X-Forwarded-For "^85\.192\.71\.100$" ALLOWED_IP
+    AuthType Basic
+    AuthName "Acceso restringido"
+    AuthUserFile /ruta/a/tu/archivo/.htpasswd
+    Require valid-user
+    Order deny,allow
+    Deny from all
+    Allow from env=ALLOWED_IP
+    Satisfy any
+</IfModule>

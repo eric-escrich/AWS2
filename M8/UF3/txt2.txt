@@ -1,0 +1,5 @@
+<IfModule mod_setenvif.c>
+    SetEnvIf X-Forwarded-For "^85\.192\.71\.100$" ALLOWED_IP
+    Deny from all
+    Allow from env=ALLOWED_IP
+</IfModule>

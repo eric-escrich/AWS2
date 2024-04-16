@@ -10,7 +10,7 @@
     <script>
         const url = 'https://jsonplaceholder.typicode.com/posts/1';
         const url2 = 'https://api.chucknorris.io/jokes/random';
-        async function obtenerDatos() {
+        async function getData() {
             try {
                 let response = await fetch(url);
                 let data = await response.json();
@@ -19,7 +19,7 @@
                 console.error('Error:', error);
             }
         }
-        obtenerDatos();
+        getData();
     </script>
 </body>
 </html>

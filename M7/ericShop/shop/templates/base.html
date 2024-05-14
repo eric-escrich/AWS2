@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IETISHOP</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <form action="{% url 'filtrar_por_categoria' %}" method="GET">
+        <select name="categoria">
+            <option value="">Todas las categorías</option>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id }}">{{ categoria.nom }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filtrar</button>
+    </form>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
